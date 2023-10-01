@@ -1,5 +1,3 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,22 +5,65 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log in</title>
-	<link href="{% static 'css/login.css' %}" rel="stylesheet" >
+    <style>
+        /* Common styles for both login and register forms */
+        .input-group {
+            text-align: center;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin: 8px ;
+            border: 2px  solid #3498db;
+            border-radius: 5px;
+        }
+
+        .toggle-btn {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* Styles for centering and the container box */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 300px; /* Adjust the width as needed */
+            padding: 20px;
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        /* Additional styles specific to the login form */
+        /* Add your specific styles for the login form here */
+    </style>
 </head>
 <body>
-	<h1><center>Login or create an</center></h1>
-	<h1><center>account with us</center></h1><br>
-{% for message in messages %}
-<h2><center>{{message}}</center></h2>
-{% endfor %}
-    <form action="login" method="POST"id="signin" class="input-group">
-{% csrf_token %}
-        <input type="text" name="username" class="input-field" placeholder="Username" required><br>
-        <input type="password" name="password" class="input-field" placeholder="Password"><br><br>
-        <!-- <input type="checkbox" class="check-box"><span>Remember password</span><br><br> -->
-        <button type="submit"  class="toggle-btn">Log in</button>
-        <p>Don't have an account?<button type="button"class="toggle-btn"><a href="register"> Sign Up</a></button> </p>
+    <div class="container">
+        <h1>Login to ChatPOS</h1>
+        {% for message in messages %}
+        <h2>{{ message }}</h2>
+        {% endfor %}
+        <form action="login" method="POST" id="signin" class="input-group">
+            {% csrf_token %}
+            <input type="text" name="username" class="input-field" placeholder="Username" required><br>
+            <input type="password" name="password" class="input-field" placeholder="Password"><br><br>
+            <button type="submit" class="toggle-btn">Log in</button>
+            <p>Don't have an account? <button type="button" class="toggle-btn"><a href="register">Sign Up</a></button></p>
+        </form>
     </div>
-    </form>
 </body>
-</html> 
+</html>
